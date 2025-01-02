@@ -1,7 +1,7 @@
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.response import Response
-import os, logging
+import os, logging, sys
 
 logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 logger = logging.getLogger(__name__)
@@ -16,8 +16,8 @@ def hello_world(request):
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT"))
-    logger.info(f"running main application and listening on port {os.environ.get("PORT")}")
-    logger.info(f"value of my port {os.environ.get("MY_PORT")}")
+    logger.info(f"running main application and listening on port {os.environ.get('PORT')}")
+    logger.info(f"value of my port {os.environ.get('MY_PORT')}")
     with Configurator() as config:
         logger.info("configuring apis")
         config.add_route('hello', '/')
